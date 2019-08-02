@@ -11,60 +11,72 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-@Entity(name = "Funciones")
+@Entity(name = "cinemafunctions")
 public class CinemaFunction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idFuncion;
+	private Integer idCinemaFunction;
 	//Salas en las que se da la funcion, ya que en un dia puede darse una funcion en mas de una sala
 	@ManyToOne
-	private Room sala;
-	@OneToMany(mappedBy="funcion")
-	private List<Ticket> entradas;
+	private Room room;
 	@ManyToOne
-	private Movie pelicula;
+	private Movie movie;
+	@OneToMany(mappedBy="cinemaFunction")
+	private List<Ticket> tickets;
 	
-	private LocalDate fecha;
-	private LocalTime hora;
+	private LocalDate date;
+	private LocalTime time;
 	
 	public CinemaFunction() {}
 
-	public CinemaFunction(LocalDate fecha, LocalTime hora, Movie pelicula, Room sala) {
-		this.fecha = fecha;
-		this.hora = hora;
-		this.pelicula = pelicula;
-		this.sala=sala;
+	public Integer getIdCinemaFunction() {
+		return idCinemaFunction;
 	}
+
+	public void setIdCinemaFunction(Integer idCinemaFunction) {
+		this.idCinemaFunction = idCinemaFunction;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public LocalTime getTime() {
+		return time;
+	}
+
+	public void setTime(LocalTime time) {
+		this.time = time;
+	}
+
 	
-	public Integer getIdFuncion() {
-		return idFuncion;
-	}
-	public void setIdFuncion(Integer idFuncion) {
-		this.idFuncion = idFuncion;
-	}
-	public Room getSala() {
-		return sala;
-	}
-	public void setSala(Room sala) {
-		this.sala = sala;
-	}
-	public LocalDate getFecha() {
-		return fecha;
-	}
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
-	}
-	public Movie getPelicula() {
-		return pelicula;
-	}
-	public void setPelicula(Movie pelicula) {
-		this.pelicula = pelicula;
-	}
-	public LocalTime getHora() {
-		return hora;
-	}
-	public void setHora(LocalTime hora) {
-		this.hora = hora;
-	}
 
 }

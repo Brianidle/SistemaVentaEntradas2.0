@@ -8,6 +8,11 @@ public class ViewController {
 
 	@GetMapping("registroPelicula")
 	public String pagRegistroPelicula() {	
-		return "registroNuevaPelicula.html";
+		return "newMovieRegistration.html";
+	}
+	
+	@GetMapping("registroFuncion")
+	public String pagRegistroFuncion() {
+		return "newMovieFunctionRegistration.html";
 	}
 }

@@ -6,43 +6,44 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity(name = "Entradas")
+@Entity(name = "tickets")
 public class Ticket {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idEntrada;
+	private Integer idTicket;
 	@ManyToOne
-	private CinemaFunction funcion;
+	private CinemaFunction cinemaFunction;
 	@ManyToOne
-	private User usuario;
+	private User user;
 	
-	public Ticket() {}
-	
-	public Ticket(CinemaFunction funcion, User usuario) {
-		this.funcion=funcion;
-		this.usuario=usuario;
-	}
-	
-	public Integer getIdEntrada() {
-		return idEntrada;
-	}
-	public void setIdEntrada(Integer idEntrada) {
-		this.idEntrada = idEntrada;
-	}
-	public CinemaFunction getFuncion() {
-		return funcion;
-	}
-	public void setFuncion(CinemaFunction funcion) {
-		this.funcion = funcion;
+
+	public Integer getIdTicket() {
+		return idTicket;
 	}
 
-	public User getUsuario() {
-		return usuario;
+	public void setIdTicket(Integer idTicket) {
+		this.idTicket = idTicket;
 	}
-	public void setUsuario(User usuario) {
-		this.usuario = usuario;
+
+	public CinemaFunction getCinemaFunction() {
+		return cinemaFunction;
 	}
+
+	public void setCinemaFunction(CinemaFunction cinemaFunction) {
+		this.cinemaFunction = cinemaFunction;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
 	
 	
 }

@@ -13,7 +13,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="/getRequestGenero.js"></script>
+<script src="getRequestRoomAndMovie.js"></script>
 </head>
 <body>
 	<div id="postResultDiv" align="center"></div>
@@ -26,15 +26,17 @@
 					</select>
 			</div>
 			<div class="form-group">
-				<label>Fecha de la Funcion</label> 
+				<label>Function Date</label> 
 				<input type="text">
 			</div>
 			<div class="form-group">
-				<label>Hora de la Funcion</label> 
+				<label>Function Schedule</label> 
 				<input type="text">
 			</div>
 			<div class="form-group">
-				<div id="roomNumbersDiv"></div>
+				<label>Function Room</label> 
+				<select id="roomNumbersSelect">
+				</select>
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>

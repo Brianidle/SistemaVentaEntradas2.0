@@ -9,50 +9,40 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-@Entity(name = "Salas")
+@Entity(name = "rooms")
 public class Room {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idSala;
+	private Integer roomNumber;
 	//En un dia una sala da muchas funciones. Esto debe aparecer en la cartelera
-	@OneToMany(mappedBy="sala")
-	private List<CinemaFunction> funciones;
+	@OneToMany(mappedBy="room")
+	private List<CinemaFunction> cinemaFunctions;
 	@ManyToMany
-	private List<Seat> asientos;
-	//@Column(columnDefinition = "numSala int(2) not null zerofill")
-	private Integer numSala;
+	private List<Seat> seats;
 	
 	public Room() {}
+
+	public Room(Integer roomNumber, List<Seat> seats) {
+		this.roomNumber = roomNumber;
+		this.seats = seats;
+	}
+
+	public Integer getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(Integer roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public List<Seat> getSeats() {
+		return seats;
+	}
+
+	public void setSeats(List<Seat> seats) {
+		this.seats = seats;
+	}
+
 	
-	public Room(Integer numSala, List<Seat> asientos) {
-		this.numSala=numSala;
-		this.asientos=asientos;
-	}
-
-	public Integer getIdSala() {
-		return idSala;
-	}
-	public void setIdSala(Integer idSala) {
-		this.idSala = idSala;
-	}
-	public List<Seat> getAsientos() {
-		return asientos;
-	}
-	public void setAsientos(List<Seat> asientos) {
-		this.asientos = asientos;
-	}
-	public List<CinemaFunction> getFunciones() {
-		return funciones;
-	}
-	public void setFunciones(List<CinemaFunction> funciones) {
-		this.funciones = funciones;
-	}
-	public Integer getNumSala() {
-		return numSala;
-	}
-	public void setNumSala(Integer numSala) {
-		this.numSala = numSala;
-	}
-
 }

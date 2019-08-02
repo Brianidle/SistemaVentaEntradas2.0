@@ -8,41 +8,42 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-@Entity(name = "Asientos")
+@Entity(name = "seats")
 public class Seat {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idAsiento;
-	@ManyToMany(mappedBy = "asientos")
-	private List<Room> salas;
-	private char fila;
-	private Integer numero;
+	private Integer idSeat;
+	@ManyToMany(mappedBy = "seats")
+	private List<Room> rooms;
 	
-	public Integer getIdAsiento() {
-		return idAsiento;
-	}
-	public void setIdAsiento(Integer idAsiento) {
-		this.idAsiento = idAsiento;
-	}
-	public char getFila() {
-		return fila;
-	}
-	public void setFila(char fila) {
-		this.fila = fila;
-	}
-	public Integer getNumero() {
-		return numero;
-	}
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-	public List<Room> getSalas() {
-		return salas;
-	}
-	public void setSalas(List<Room> salas) {
-		this.salas = salas;
+	private char rowSeat;
+	private Integer number;
+	
+	public Integer getIdSeat() {
+		return idSeat;
 	}
 
+	public void setIdSeat(Integer idSeat) {
+		this.idSeat = idSeat;
+	}
+
+	public char getRowSeat() {
+		return rowSeat;
+	}
+
+	public void setRowSeat(char rowSeat) {
+		this.rowSeat = rowSeat;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+	
+	
 	
 }

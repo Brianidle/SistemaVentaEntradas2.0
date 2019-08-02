@@ -8,42 +8,50 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity(name = "Usuarios")
+@Entity(name = "Users")
 public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idUsuario;
-	@OneToMany(mappedBy="usuario")
-	private List<Ticket> entradas;
-	private String nombre;
-	private String contrasenia;
+	private Integer idUser;
+	@OneToMany(mappedBy="user")
+	private List<Ticket> tickets;
+	private String nickname;
+	private String password;
 	
-	public Integer getIdUsuario() {
-		return idUsuario;
+	public User() {}
+
+	public Integer getIdUser() {
+		return idUser;
 	}
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
-	public String getNombre() {
-		return nombre;
+
+	public List<Ticket> getTickets() {
+		return tickets;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
 	}
-	public String getContrasenia() {
-		return contrasenia;
+
+	public String getNickname() {
+		return nickname;
 	}
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-	public List<Ticket> getEntradas() {
-		return entradas;
+
+	public String getPassword() {
+		return password;
 	}
-	public void setEntradas(List<Ticket> entradas) {
-		this.entradas = entradas;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
 	
 
 }

@@ -62,9 +62,13 @@ public class ControladorRest {
 	
 	@GetMapping("getRooms")
 	public ResponseEntity<Object> getRooms(){
-		List<Room> seats=roomRepo.findAll();
+		List<Room> rooms=roomRepo.findAll();
 		
-		ServiceResponse<List<Room>> response= new ServiceResponse<List<Room>>("success", seats);
+		for (Room room : rooms) {
+			System.out.println(room);
+		}
+		
+		ServiceResponse<List<Room>> response= new ServiceResponse<List<Room>>("success", rooms);
 		
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}

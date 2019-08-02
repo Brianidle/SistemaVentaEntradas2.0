@@ -8,41 +8,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-@Entity(name = "Generos")
+@Entity(name = "genres")
 public class Genre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idGenero;
-	@ManyToMany(mappedBy="generos")
-	private List<Movie> peliculas;
-	private String nombre;
+	private Integer idGenre;
+	@ManyToMany(mappedBy="genres")
+	private List<Movie> movies;
+	private String name;
 	
 	public Genre() {
 	}
 	
-	public Genre(String nombre) {
-		this.nombre=nombre;
-	}
-	
-	public Integer getIdGenero() {
-		return idGenero;
-	}
-	public void setIdGenero(Integer idGenero) {
-		this.idGenero = idGenero;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public Genre(String name) {
+		this.name=name;
 	}
 
-	@Override
-	public String toString() {
-		return "Genre [idGenero=" + idGenero + ", nombre=" + nombre + "]";
+	public Integer getIdGenre() {
+		return idGenre;
 	}
-	
+
+	public void setIdGenre(Integer idGenre) {
+		this.idGenre = idGenre;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	
 	

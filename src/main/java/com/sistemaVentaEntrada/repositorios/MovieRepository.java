@@ -6,6 +6,6 @@ import com.sistemaVentaEntrada.modelo.Movie;
 
 public interface MovieRepository extends JpaRepository<Movie, Integer>{
 	
-	public Movie findByNombre(String nombre);
+	public Movie findByName(String name);
 	
 }

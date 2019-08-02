@@ -9,49 +9,43 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-@Entity(name = "Peliculas")
+@Entity(name = "movies")
 public class Movie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idPelicula;
-	private String nombre;
+	private Integer idMovie;
 	@ManyToMany
-	private List<Genre> generos;
-	@OneToMany(mappedBy="pelicula")
-	private List<CinemaFunction> funciones;
+	private List<Genre> genres;
+	@OneToMany(mappedBy="movie")
+	private List<CinemaFunction> cinemaFunctions;
+	private String name;
 	
 	public Movie() {}
-	
-	public Movie(String nombre, List<Genre> generos) {
-		this.nombre=nombre;
-		this.generos=generos;
-	}
-	
-	public Integer getIdPelicula() {
-		return idPelicula;
-	}
-	public void setIdPelicula(Integer idPelicula) {
-		this.idPelicula = idPelicula;
-	}
-	public List<Genre> getGeneros() {
-		return generos;
-	}
-	public void setGeneros(List<Genre> generos) {
-		this.generos = generos;
-	}
-	public List<CinemaFunction> getFuncion() {
-		return funciones;
-	}
-	public void setFuncion(List<CinemaFunction> funciones) {
-		this.funciones = funciones;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
 
+	public Integer getIdMovie() {
+		return idMovie;
+	}
+
+	public void setIdMovie(Integer idMovie) {
+		this.idMovie = idMovie;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }
