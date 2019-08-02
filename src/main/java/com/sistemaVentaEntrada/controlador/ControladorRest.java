@@ -1,8 +1,6 @@
 package com.sistemaVentaEntrada.controlador;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sistemaVentaEntrada.modelo.Genre;
-import com.sistemaVentaEntrada.modelo.Pelicula;
-import com.sistemaVentaEntrada.modelo.Sala;
+import com.sistemaVentaEntrada.modelo.Movie;
+import com.sistemaVentaEntrada.modelo.Room;
 import com.sistemaVentaEntrada.repositorios.GenreRepository;
 import com.sistemaVentaEntrada.repositorios.SeatRepository;
 import com.sistemaVentaEntrada.repositorios.TicketRepository;
@@ -28,21 +26,21 @@ public class ControladorRest {
 	@Autowired
 	private SeatRepository repoAsiento;
 	@Autowired
-	private TicketRepository repoEntrada;
+	private TicketRepository ticketRepo;
 	@Autowired 
-	private MovieFunctionRepository repoFuncion;
+	private MovieFunctionRepository movieFunctionRepo;
 	@Autowired
-	private GenreRepository repoGenre;
+	private GenreRepository genreRepo;
 	@Autowired
-	private MovieRepository repoPelicula;
+	private MovieRepository movieRepo;
 	@Autowired
-	private RoomRepository repoSala;
+	private RoomRepository roomRepo;
 	@Autowired
-	private UserRepository repoUsuario;
+	private UserRepository userRepo;
 
 	@GetMapping("getGenres")
 	public ResponseEntity<Object> getGenresBD() {
-		List<Genre> genresBD=repoGenre.findAll();
+		List<Genre> genresBD=genreRepo.findAll();
 		
 		for (Genre genre : genresBD) {
 			System.out.println(genre);
@@ -53,20 +51,20 @@ public class ControladorRest {
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}
 	
-	@GetMapping("getPeliculas")
-	public ResponseEntity<Object> getPeliculas(){
-		List<Pelicula> movies= repoPelicula.findAll();
+	@GetMapping("getMovies")
+	public ResponseEntity<Object> getMovies(){
+		List<Movie> movies= movieRepo.findAll();
 		
-		ServiceResponse<List<Pelicula>> response=new ServiceResponse<List<Pelicula>>("success",movies);
+		ServiceResponse<List<Movie>> response=new ServiceResponse<List<Movie>>("success",movies);
 		
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}
 	
-	@GetMapping("getSalas")
-	public ResponseEntity<Object> getSalas(){
-		List<Sala> seats=repoSala.findAll();
+	@GetMapping("getRooms")
+	public ResponseEntity<Object> getRooms(){
+		List<Room> seats=roomRepo.findAll();
 		
-		ServiceResponse<List<Sala>> response= new ServiceResponse<List<Sala>>("success", seats);
+		ServiceResponse<List<Room>> response= new ServiceResponse<List<Room>>("success", seats);
 		
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}

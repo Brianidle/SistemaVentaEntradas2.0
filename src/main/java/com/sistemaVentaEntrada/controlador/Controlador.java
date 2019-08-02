@@ -25,8 +25,8 @@ import com.sistemaVentaEntrada.repositorios.UserRepository;
 import com.sistemaVentaEntrada.modelo.Seat;
 import com.sistemaVentaEntrada.modelo.CinemaFunction;
 import com.sistemaVentaEntrada.modelo.Genre;
-import com.sistemaVentaEntrada.modelo.Pelicula;
-import com.sistemaVentaEntrada.modelo.Sala;
+import com.sistemaVentaEntrada.modelo.Movie;
+import com.sistemaVentaEntrada.modelo.Room;
 
 @Controller
 public class Controlador {
@@ -92,19 +92,19 @@ public class Controlador {
 	
 	@RequestMapping("registroFuncion")
 	public String pagRegistroFuncion(Model model) {
-		List<Pelicula> peliculasBD=repoPelicula.findAll();
+		List<Movie> peliculasBD=repoPelicula.findAll();
 		//List<Sala> salasBD=repoSala.findAll();
 		List<String> nombresPeliculasBD=new ArrayList<String>();
 		Map<String,String> opcionesPeliculas=new HashMap<String,String>();
 		//Map<Integer,String> opcionesNumSalas=new HashMap<Integer,String>();
 		
 		//Valor por defecto para la Lista Desplegable
-		Pelicula peliculaPorDefecto=new Pelicula();
+		Movie peliculaPorDefecto=new Movie();
 		peliculaPorDefecto.setNombre("Terminator 3");
 		
 		//List<String> nombresPeliculasBD = (List<String>) peliculasBD.forEach(p-> {p.getNombre();});
 		
-		for (Pelicula pelicula : peliculasBD) {
+		for (Movie pelicula : peliculasBD) {
 			nombresPeliculasBD.add(pelicula.getNombre());
 			opcionesPeliculas.put(pelicula.getNombre(), pelicula.getNombre().toUpperCase());
 		}
@@ -124,14 +124,14 @@ public class Controlador {
 	@RequestMapping("registrarPelicula")
 	public ModelAndView registrarPelicula(String nombrePelicula,@RequestParam("nombre") List<String> nombresGeneros) {
 		ModelAndView mv=new ModelAndView();
-		Pelicula nuevaPelicula;
+		Movie nuevaPelicula;
 		List<Genre> generosElegidos=new ArrayList<Genre>();
 		
 		for (String nombreGenero : nombresGeneros) {
 			generosElegidos.add(repoGenero.findByNombre(nombreGenero));
 		}
 		
-		nuevaPelicula=new Pelicula(nombrePelicula, generosElegidos);
+		nuevaPelicula=new Movie(nombrePelicula, generosElegidos);
 		repoPelicula.save(nuevaPelicula);
 		
 		mv.addObject("lists",generosElegidos);
@@ -144,8 +144,8 @@ public class Controlador {
 	@RequestMapping("registarFuncion")
 	public ModelAndView registrarFuncion(@RequestParam("nombre") String nombrePelicula, String fecha, String hora, Integer numSala){
 		ModelAndView mv=new ModelAndView();
-		Pelicula pelicula=repoPelicula.findByNombre(nombrePelicula);
-		Sala sala=repoSala.findByNumSala(numSala);
+		Movie pelicula=repoPelicula.findByNombre(nombrePelicula);
+		Room sala=repoSala.findByNumSala(numSala);
 		CinemaFunction funcion=new CinemaFunction(LocalDate.parse(fecha), LocalTime.parse(hora), pelicula, sala);
 		
 		mv.addObject("funcion",funcion);
@@ -218,7 +218,7 @@ public class Controlador {
 	public void agregarSala(Integer numSala, int numFilas, int numAsientosPorFila) {
 		
 		List<Seat> asientos= obtenerAsientos(numFilas, numAsientosPorFila);
-		Sala sala=new Sala(numSala, asientos);
+		Room sala=new Room(numSala, asientos);
 		
 		repoSala.save(sala);
 		

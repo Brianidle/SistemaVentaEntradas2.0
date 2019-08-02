@@ -15,7 +15,7 @@ public class Seat {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idAsiento;
 	@ManyToMany(mappedBy = "asientos")
-	private List<Sala> salas;
+	private List<Room> salas;
 	private char fila;
 	private Integer numero;
 	
@@ -37,10 +37,10 @@ public class Seat {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-	public List<Sala> getSalas() {
+	public List<Room> getSalas() {
 		return salas;
 	}
-	public void setSalas(List<Sala> salas) {
+	public void setSalas(List<Room> salas) {
 		this.salas = salas;
 	}
 

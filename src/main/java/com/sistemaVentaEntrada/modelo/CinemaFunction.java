@@ -18,18 +18,18 @@ public class CinemaFunction {
 	private Integer idFuncion;
 	//Salas en las que se da la funcion, ya que en un dia puede darse una funcion en mas de una sala
 	@ManyToOne
-	private Sala sala;
+	private Room sala;
 	@OneToMany(mappedBy="funcion")
 	private List<Ticket> entradas;
 	@ManyToOne
-	private Pelicula pelicula;
+	private Movie pelicula;
 	
 	private LocalDate fecha;
 	private LocalTime hora;
 	
 	public CinemaFunction() {}
 
-	public CinemaFunction(LocalDate fecha, LocalTime hora, Pelicula pelicula, Sala sala) {
+	public CinemaFunction(LocalDate fecha, LocalTime hora, Movie pelicula, Room sala) {
 		this.fecha = fecha;
 		this.hora = hora;
 		this.pelicula = pelicula;
@@ -42,10 +42,10 @@ public class CinemaFunction {
 	public void setIdFuncion(Integer idFuncion) {
 		this.idFuncion = idFuncion;
 	}
-	public Sala getSala() {
+	public Room getSala() {
 		return sala;
 	}
-	public void setSala(Sala sala) {
+	public void setSala(Room sala) {
 		this.sala = sala;
 	}
 	public LocalDate getFecha() {
@@ -54,10 +54,10 @@ public class CinemaFunction {
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
-	public Pelicula getPelicula() {
+	public Movie getPelicula() {
 		return pelicula;
 	}
-	public void setPelicula(Pelicula pelicula) {
+	public void setPelicula(Movie pelicula) {
 		this.pelicula = pelicula;
 	}
 	public LocalTime getHora() {

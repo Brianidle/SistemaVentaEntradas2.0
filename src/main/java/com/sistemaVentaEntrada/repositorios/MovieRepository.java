@@ -2,10 +2,10 @@ package com.sistemaVentaEntrada.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.sistemaVentaEntrada.modelo.Pelicula;
+import com.sistemaVentaEntrada.modelo.Movie;
 
-public interface MovieRepository extends JpaRepository<Pelicula, Integer>{
+public interface MovieRepository extends JpaRepository<Movie, Integer>{
 	
-	public Pelicula findByNombre(String nombre);
+	public Movie findByNombre(String nombre);
 	
 }

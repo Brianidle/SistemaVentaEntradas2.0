@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Salas")
-public class Sala {
+public class Room {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +23,9 @@ public class Sala {
 	//@Column(columnDefinition = "numSala int(2) not null zerofill")
 	private Integer numSala;
 	
-	public Sala() {}
+	public Room() {}
 	
-	public Sala(Integer numSala, List<Seat> asientos) {
+	public Room(Integer numSala, List<Seat> asientos) {
 		this.numSala=numSala;
 		this.asientos=asientos;
 	}

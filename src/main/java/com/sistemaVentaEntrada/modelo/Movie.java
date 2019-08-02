@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Peliculas")
-public class Pelicula {
+public class Movie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +21,9 @@ public class Pelicula {
 	@OneToMany(mappedBy="pelicula")
 	private List<CinemaFunction> funciones;
 	
-	public Pelicula() {}
+	public Movie() {}
 	
-	public Pelicula(String nombre, List<Genre> generos) {
+	public Movie(String nombre, List<Genre> generos) {
 		this.nombre=nombre;
 		this.generos=generos;
 	}
