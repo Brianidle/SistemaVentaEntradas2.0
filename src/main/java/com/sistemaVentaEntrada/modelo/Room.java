@@ -44,5 +44,9 @@ public class Room {
 		this.seats = seats;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Room [roomNumber=" + roomNumber + "]";
+	}
+
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>movieRegistration</title>
+<title>User Registration</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -13,31 +13,24 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="/getRequestGenero.js"></script>
-<script src="/postRequestPelicula.js"></script>
+<script src="/postRequestUser.js"></script>
 </head>
 <body>
 	<div id="postResultDiv" align="center"></div>
 	<div class="container">
-		<h2>Movie Registration</h2>
-		<form id="newMovieFunctionForm">
+		<h2>User Registration</h2>
+		<form id="newUserRegistrationForm">
 			<div class="form-group">
-				<label>Movie Name:</label> <input type="text"
-					id="movieName" placeholder="Enter Movie Name"
-					>
+				<label>Nickname</label></br>
+				<input id="nicknameText" type="text" placeholder="Enter NickName">
 			</div>
 			<div class="form-group">
-				<label>Genres:</label> 
-				<div id="genreNameCheckboxes"></div>
-					
+				<label>Password</label></br>
+				<input id="passwordText" type="password" placeholder="Enter Password">
 			</div>
-			<button type="submit" class="btn btn-primary">Register Movie</button>
+			<button type="submit" class="btn btn-primary">Register User</button>
 		</form>
 		<br />
-		<div class="col-sm-7" style="margin: 20px 0px 20px 0px">
-			<button id="registerMovieButton" type="button" class="btn btn-primary">Get
-				All Books</button>
-		</div>
 	</div>
 </body>
 </html>

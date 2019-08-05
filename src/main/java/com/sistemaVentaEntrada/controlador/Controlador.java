@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sistemaVentaEntrada.repositorios.GenreRepository;
-import com.sistemaVentaEntrada.repositorios.MovieFunctionRepository;
+import com.sistemaVentaEntrada.repositorios.CinemaFunctionRepository;
 import com.sistemaVentaEntrada.repositorios.MovieRepository;
 import com.sistemaVentaEntrada.repositorios.RoomRepository;
 import com.sistemaVentaEntrada.repositorios.SeatRepository;
@@ -38,7 +38,7 @@ public class Controlador {
 	@Autowired
 	private TicketRepository ticketRepo;
 	@Autowired 
-	private MovieFunctionRepository movieFunctionRepo;
+	private CinemaFunctionRepository movieFunctionRepo;
 	@Autowired
 	private GenreRepository genreRepo;
 	@Autowired

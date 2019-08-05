@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>Insert title here</title>
+<title>Cinema Function Registration</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -13,38 +13,33 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="getRequestRoomAndMovie.js"></script>
+<script src="/getRequestRoomAndMovie.js"></script>
+<script src="/postRequestCinemaFunction.js"></script>
 </head>
 <body>
 	<div id="postResultDiv" align="center"></div>
 	<div class="container">
-		<h2>Movie Function Registration</h2>
-		<form id="newMovieFunctionForm">
+		<h2>Cinema Function Registration</h2>
+		<form id="newCinemaFunctionForm">
 			<div class="form-group">
 				<label>Select a Movie:</label>
-					<select id="movieNamesSelect">
-					</select>
+					<select id="movieNamesSelect"></select>
 			</div>
 			<div class="form-group">
 				<label>Function Date</label> 
-				<input type="text">
+				<input id="functionDateText" type="text">
 			</div>
 			<div class="form-group">
-				<label>Function Schedule</label> 
-				<input type="text">
+				<label>Function Time</label> 
+				<input id="functionTimeText" type="text">
 			</div>
 			<div class="form-group">
-				<label>Function Room</label> 
-				<select id="roomNumbersSelect">
-				</select>
+				<label>Cinema Function Room</label> 
+				<select id="roomNumbersSelect"></select>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">Register Cinema Function</button>
 		</form>
 		<br />
-		<div class="col-sm-7" style="margin: 20px 0px 20px 0px">
-			<button id="registerMovieFunctionButton" type="button" class="btn btn-primary">Get
-				All Books</button>
-		</div>
 	</div>
 </body>
 </html>

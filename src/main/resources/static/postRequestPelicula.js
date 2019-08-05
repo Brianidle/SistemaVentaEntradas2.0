@@ -2,14 +2,13 @@ $(document).ready(
 		
 		function() {
 			// SUBMIT FORM
-			$("#peliculaForm").submit(function(event) {
+			$("#newMovieFunctionForm").submit(function(event) {
 				// Prevent the form from submitting via the browser.
 				event.preventDefault();
-				var genres=[];
+				var genresNames=[];
 				$.each($("input[name='genre']:checked"), function(){            
 	                genresNames.push($(this).val());
 	            });
-				console.log("me llamaste");
 				ajaxPost(genresNames);
 			});
 

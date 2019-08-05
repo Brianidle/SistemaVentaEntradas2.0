@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sistemaVentaEntrada.modelo.CinemaFunction;
 
-public interface MovieFunctionRepository extends JpaRepository<CinemaFunction, Integer>{
+public interface CinemaFunctionRepository extends JpaRepository<CinemaFunction, Integer>{
 
 }

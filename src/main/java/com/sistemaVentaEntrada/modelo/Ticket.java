@@ -16,7 +16,12 @@ public class Ticket {
 	private CinemaFunction cinemaFunction;
 	@ManyToOne
 	private User user;
+	@ManyToOne
+	private Seat seat;
 	
+	private Boolean bought=false;
+	
+	public Ticket() {}
 
 	public Integer getIdTicket() {
 		return idTicket;
@@ -41,9 +46,22 @@ public class Ticket {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-	
+
+	public Seat getSeat() {
+		return seat;
+	}
+
+	public void setSeat(Seat seat) {
+		this.seat = seat;
+	}
+
+	public Boolean getBought() {
+		return bought;
+	}
+
+	public void setBought(Boolean bought) {
+		this.bought = bought;
+	}
 	
 	
 }

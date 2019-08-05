@@ -46,6 +46,11 @@ public class Movie {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Movie [idMovie=" + idMovie + ", genres=" + genres + ", name=" + name + "]";
+	}
 	
 	
 }

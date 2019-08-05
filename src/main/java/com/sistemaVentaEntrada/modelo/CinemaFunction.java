@@ -77,6 +77,10 @@ public class CinemaFunction {
 		this.time = time;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "CinemaFunction [idCinemaFunction=" + idCinemaFunction + ", room=" + room + ", movie=" + movie
+				+ ", date=" + date + ", time=" + time + "]";
+	}
 
 }

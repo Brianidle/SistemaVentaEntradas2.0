@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity(name = "seats")
 public class Seat {
@@ -16,6 +17,8 @@ public class Seat {
 	private Integer idSeat;
 	@ManyToMany(mappedBy = "seats")
 	private List<Room> rooms;
+	@OneToMany(mappedBy="seat")
+	private List<Ticket> tickets;
 	
 	private char rowSeat;
 	private Integer number;

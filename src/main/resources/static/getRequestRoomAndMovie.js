@@ -1,11 +1,8 @@
 $(document).ready(
 		function() {
-
-			// GET REQUEST
-			$("#registerMovieFunctionButton").click(function(event) {
-				event.preventDefault();
-				ajaxGetMovies();
-			});
+			
+			ajaxGetMovies();
+			ajaxGetRooms();
 
 			// DO GET
 			function ajaxGetMovies() {
@@ -16,7 +13,7 @@ $(document).ready(
 						if (result.status == "success") {
 							$.each(result.data,
 									function(i, movie) {//este objeto es el service response que le enviamos desde el backend, el cual tiene los atributos: data y result
-										$("#movieNamesSelect").append("<option value=\""+movie.nombre+"\">"+movie.nombre+"</option><br>");
+										$("#movieNamesSelect").append("<option value=\""+movie.name+"\"> "+movie.name+"</option>");
 									});
 							console.log("Success: ", result);
 						} else {
@@ -37,7 +34,7 @@ $(document).ready(
 						if (result.status == "success") {
 							$.each(result.data,
 									function(i, room) {//este objeto es el service response que le enviamos desde el backend, el cual tiene los atributos: data y result
-										$("#roomNumbersSelect").append("<option value=\""+room.numSala+"\">"+room.numSala+"</option><br>");
+										$("#roomNumbersSelect").append("<option value=\""+room.roomNumber+"\"> "+room.roomNumber+"</option>");
 									});
 							console.log("Success: ", result);
 						} else {

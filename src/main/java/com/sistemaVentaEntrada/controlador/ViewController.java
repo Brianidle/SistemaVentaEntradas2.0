@@ -6,13 +6,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ViewController {
 
-	@GetMapping("registroPelicula")
-	public String pagRegistroPelicula() {	
+	@GetMapping("movieRegistration")
+	public String pagMovieRegistration() {	
 		return "newMovieRegistration.html";
 	}
 	
-	@GetMapping("registroFuncion")
-	public String pagRegistroFuncion() {
-		return "newMovieFunctionRegistration.html";
+	@GetMapping("cinemaFunctionRegistration")
+	public String pagCinemaFunctionRegistration() {
+		return "newCinemaFunctionRegistration.html";
+	}
+	
+	@GetMapping("userRegistration")
+	public String pagUserRegistration() {
+		return "newUserRegistration.html";
+	}
+	
+	@GetMapping("home")
+	public String pagHome() {
+		return "home.html";
 	}
 }
