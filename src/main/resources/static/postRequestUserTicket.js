@@ -2,7 +2,7 @@ $(document).ready(
 		
 		function() {
 			// SUBMIT FORM
-			$("#newCinemaFunctionForm").submit(function(event) {
+			$("#buyTicketForm").submit(function(event) {
 				// Prevent the form from submitting via the browser.
 				event.preventDefault();
 				ajaxPost();
@@ -12,10 +12,9 @@ $(document).ready(
 
 				// PREPARE FORM DATA objeto
 				var formData = {
-					movieName : $("#movieNamesSelect").val(),
-					roomNumber : $("#roomNumbersSelect").val(),
-					date : $("#functionDateText").val(),
-					time : $("#functionTimeText").val()
+					nickname : $("#nicknameLabel").val(),
+					rowSeat : $("#functionDateText").val(),
+					seatNumber : $("#functionTimeText").val()
 				}
 
 				// DO POST
@@ -26,13 +25,7 @@ $(document).ready(
 					data : JSON.stringify(formData),
 					dataType : 'json',
 					success : function(result) {
-						if (result.status == "success") {
-							$("#postResultDiv").html(
-											"Cinema Function Successfuly Registered!! <br>");
-						} else {
-							$("#postResultDiv").html("<strong>Error</strong>");
-						}
-						console.log(result);
+							$("#postResultDiv").html("Cinema Function Successfully Registered !! <br>");
 					},
 					error : function(e) {
 						alert("Error!")

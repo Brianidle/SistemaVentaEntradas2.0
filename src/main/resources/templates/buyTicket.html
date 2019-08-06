@@ -13,25 +13,23 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="/getRequestGenero.js"></script>
-<script src="/postRequestPelicula.js"></script>
+<script src="/getRequestSeats.js">
+</script>
+<script type="text/javascript">
+	function buyTicket(){
+		$("#as").css(border-style,"inset");
+		alert("Ticket Bought Succesfully!!");
+	} 
+</script>
 </head>
 <body>
 	<div id="postResultDiv" align="center"></div>
 	<div class="container">
-		<h2>Movie Registration</h2>
-		<form id="newMovieFunctionForm">
-			<div class="form-group">
-				<label>Movie Name:</label> <input type="text"
-					id="movieName" placeholder="Enter Movie Name"
-					>
+		<h2>Choose a Seat</h2>
+		<form id="buyTicketForm">
+			<div id="buttonBySeatDiv" class="col-sm-7" style="margin: 10px 0px 10px 0px">
 			</div>
-			<div class="form-group">
-				<label>Genres:</label> 
-				<div id="genreNameCheckboxes"></div>
-					
-			</div>
-			<button type="submit" class="btn btn-primary">Register Movie</button>
+			<button type="submit" class="btn btn-primary">Buy Ticket</button>
 		</form>
 		<br />
 	</div>

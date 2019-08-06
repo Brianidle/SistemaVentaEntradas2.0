@@ -2,38 +2,29 @@ $(document).ready(
 		
 		function() {
 			// SUBMIT FORM
-			$("#peliculaForm").submit(function(event) {
+			$("#deleteMovieForm").submit(function(event) {
 				// Prevent the form from submitting via the browser.
 				event.preventDefault();
-				var genres=[];
-				$.each($("input[name='genre']:checked"), function(){            
-	                genresNames.push($(this).val());
-	            });
-				console.log("me llamaste");
-				ajaxPost(genresNames);
+				ajaxDelete();
 			});
 
-			function ajaxPost(genresNames) {
+			function ajaxDelete() {
 
 				// PREPARE FORM DATA objeto
 				var formData = {
-					genres : genresNames,
-					name : $("#movieName").val()
+					name : $("#movieNamesSelect").val()
 				}
 
 				// DO POST
 				$.ajax({
-					type : "POST",
+					type : "DELETE",
 					contentType : "application/json",
-					url : "addMovie",
+					url : "deleteMovie",
 					data : JSON.stringify(formData),
 					dataType : 'json',
 					success : function(result) {
 						if (result.status == "success") {
-							$("#postResultDiv").html(
-									"" + result.data.name
-											+ " Post Successfully! <br>"
-											+ "---> Congrats !!" + "</p>");
+							$("#postResultDiv").html(result.data.name+"Successfuly Deleted!! <br>");
 						} else {
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}

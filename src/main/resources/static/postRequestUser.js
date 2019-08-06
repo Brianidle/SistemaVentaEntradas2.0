@@ -26,8 +26,7 @@ $(document).ready(
 					success : function(result) {
 						if (result.status == "success") {
 							$("#postResultDiv").html(result.data.nickname+
-											" Successfull Post !! <br>"
-											+ "---> Congrats !!" + "</p>");
+											" Successfuly Registered !! <br>");
 						} else {
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}

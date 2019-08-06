@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8" />
 <title>Home</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,14 +12,21 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="/buttonEventsHomePage.js"></script>
+<script type="text/javascript" src="buttonEventsHomePage.js">
+</script>  
 </head>
 <body>
+	<div class="container">
 	<h2>Choose an option<h2><br>
-	<div class="col-sm-7" style="margin: 20px 0px 20px 0px">
-		<button id="goToNewUserPageButton" onclick="goToNewUserPage()">Register New User</button></br></br>
-		<button id="goToNewCinemaFunctionPageButton" onclick="goToNewCinemaFunctionPage()">Register New Cinema Function</button></br></br>
-		<button id="goToNewMoviePageButton" onclick="goToNewMoviePage()">Register New Movie</button>
+		<div class="col-sm-7" style="margin: 10px 0px 10px 0px">
+			<button onclick="goToNewUserPage()">Register New User</button></br></br>
+			<button onclick="goToNewCinemaFunctionPage()">Register New Cinema Function</button></br></br>
+			<button onclick="goToNewMoviePage()">Register New Movie</button></br></br>
+			<button onclick="goToBuyTicketPage()">Buy a Ticket</button></br></br>
+			<button onclick="goToDeleteMoviePage()">Delete a Movie</button></br></br>
+			<button onclick="goToDeleteCinemaFunctionPage()">Delete Cinema Function</button></br></br>
+			<button onclick="goToChanguePassword()">Changue User Password</button>
+		</div>
 	</div>
 </body>
 </html>

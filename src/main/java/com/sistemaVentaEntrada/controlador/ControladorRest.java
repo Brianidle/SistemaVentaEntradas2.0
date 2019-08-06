@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +35,7 @@ import com.sistemaVentaEntrada.repositorios.UserRepository;
 public class ControladorRest {
 	
 	@Autowired
-	private SeatRepository repoAsiento;
+	private SeatRepository seatRepo;
 	@Autowired
 	private TicketRepository ticketRepo;
 	@Autowired 
@@ -70,17 +71,42 @@ public class ControladorRest {
 	public ResponseEntity<Object> getRoomsBD(){
 		List<Room> rooms=roomRepo.findAll();
 		
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
-		
 		ServiceResponse<List<Room>> response= new ServiceResponse<List<Room>>("success", rooms);
 		
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}
 	
+	@GetMapping("getSeats")
+	public ResponseEntity<Object> sendSeatsToClient(){
+		CinemaFunction cinemaFunction=cinemaFunctionRepo.findById(2).get();
+		List<Ticket> cinemaFunctionTickets=cinemaFunction.getTickets();
+		List<ResponseSeat> responseSeats=new ArrayList<ResponseSeat>();
+		
+		for (Ticket ticket : cinemaFunctionTickets) {
+			responseSeats.add(new ResponseSeat(ticket.getSeat().getRowSeat(), ticket.getSeat().getNumber()));
+		}
+		
+		ServiceResponse<List<ResponseSeat>> response=new ServiceResponse<List<ResponseSeat>>("success", responseSeats);
+		return new ResponseEntity<Object>(response,HttpStatus.OK);
+	}
+
+	@PostMapping("ticketsBoughtByUser")
+	public ResponseEntity<Object> buyOneOrMoreTickets(@RequestBody InputPostUserTicket inputPost){
+		Seat seatBought=seatRepo.findByRowSeatAndNumber(inputPost.getRowSeat(), inputPost.getSeatNumber());
+		Ticket ticket=ticketRepo.findBySeat(seatBought);
+		User user=userRepo.findByNickname(inputPost.getNickname());
+		List<Ticket> tickets=new ArrayList<Ticket>();
+		ticket.setBought(true);
+		tickets.add(ticket);
+		
+		user.setTickets(tickets);
+		
+		ServiceResponse<InputPostUserTicket> response=new ServiceResponse<InputPostUserTicket>("success",inputPost);
+		return new ResponseEntity<Object>(response,HttpStatus.OK);
+	}
+	
 	@PostMapping("addMovie")
-	public ResponseEntity<Object> addMovieBD(@RequestBody Movie movieInput){
+	public ResponseEntity<Object> addMovie(@RequestBody Movie movieInput){
 		System.out.println(movieInput);
 		List<Genre> genresBD=new ArrayList<Genre>();
 		
@@ -99,21 +125,21 @@ public class ControladorRest {
 	}
 	
 	@PostMapping("addCinemaFunction")
-	public ResponseEntity<Object> addCinemaFunction(@RequestBody InfoPostPelicula infoPost){
+	public ResponseEntity<Object> addCinemaFunction(@RequestBody InputCinemaFunction inputCinemaFunction){
 		CinemaFunction newCinemaFunction= new CinemaFunction();
 
-		System.out.println(infoPost);
+		System.out.println(inputCinemaFunction);
 		
-		Room room=roomRepo.findByRoomNumber(infoPost.getRoomNumber());
-		Movie movie=movieRepo.findByName(infoPost.getMovieName());
+		Room room=roomRepo.findByRoomNumber(inputCinemaFunction.getRoomNumber());
+		Movie movie=movieRepo.findByName(inputCinemaFunction.getMovieName());
 		
 		System.out.println(room);
 		System.out.println(movie);
 		
 		newCinemaFunction.setMovie(movie);
 		newCinemaFunction.setRoom(room);
-		newCinemaFunction.setDate(LocalDate.parse(infoPost.getDate()));
-		newCinemaFunction.setTime(LocalTime.parse(infoPost.getTime()));
+		newCinemaFunction.setDate(LocalDate.parse(inputCinemaFunction.getDate()));
+		newCinemaFunction.setTime(LocalTime.parse(inputCinemaFunction.getTime()));
 		
 		cinemaFunctionRepo.save(newCinemaFunction);
 		
@@ -128,7 +154,7 @@ public class ControladorRest {
 			ticketRepo.save(t);
 		}
 		
-		ServiceResponse<InfoPostPelicula> response=new ServiceResponse<InfoPostPelicula>("success",infoPost);
+		ServiceResponse<InputCinemaFunction> response=new ServiceResponse<InputCinemaFunction>("success",inputCinemaFunction);
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}
 	
@@ -139,6 +165,15 @@ public class ControladorRest {
 		userRepo.save(user);
 		
 		ServiceResponse<User> response=new ServiceResponse<User>("success",user);
+		return new ResponseEntity<Object>(response,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("deleteMovie")
+	public ResponseEntity<Object> deleteMovie(@RequestBody Movie movie){
+		Movie m=movieRepo.findByName(movie.getName());
+		movieRepo.delete(m);
+		
+		ServiceResponse<Movie> response=new ServiceResponse<Movie>("success",movie);
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}
 	

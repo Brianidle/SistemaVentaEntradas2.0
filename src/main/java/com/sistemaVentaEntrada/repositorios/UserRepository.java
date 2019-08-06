@@ -6,4 +6,5 @@ import com.sistemaVentaEntrada.modelo.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+	public User findByNickname(String nickname);
 }

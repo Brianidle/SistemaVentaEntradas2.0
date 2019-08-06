@@ -6,4 +6,5 @@ import com.sistemaVentaEntrada.modelo.CinemaFunction;
 
 public interface CinemaFunctionRepository extends JpaRepository<CinemaFunction, Integer>{
 
+	//findByRoomAndDateAndTime
 }

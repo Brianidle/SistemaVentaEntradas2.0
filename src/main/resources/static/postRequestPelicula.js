@@ -31,8 +31,7 @@ $(document).ready(
 						if (result.status == "success") {
 							$("#postResultDiv").html(
 									"" + result.data.name
-											+ " Post Successfully! <br>"
-											+ "---> Congrats !!" + "</p>");
+											+ " Registered Sucessfuly R <br>");
 						} else {
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}

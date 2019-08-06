@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>movieRegistration</title>
+<title>Cinema Function Registration</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -13,25 +13,19 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="/getRequestGenero.js"></script>
-<script src="/postRequestPelicula.js"></script>
+<script src="/getRequestMovie.js"></script>
+<script src="/deleteRequestMovie.js"></script>
 </head>
 <body>
 	<div id="postResultDiv" align="center"></div>
 	<div class="container">
-		<h2>Movie Registration</h2>
-		<form id="newMovieFunctionForm">
+		<h2>Choose the movie to be deleted</h2>
+		<form id="deleteMovieForm">
 			<div class="form-group">
-				<label>Movie Name:</label> <input type="text"
-					id="movieName" placeholder="Enter Movie Name"
-					>
+				<label>Select a Movie:</label>
+					<select id="movieNamesSelect"></select>
 			</div>
-			<div class="form-group">
-				<label>Genres:</label> 
-				<div id="genreNameCheckboxes"></div>
-					
-			</div>
-			<button type="submit" class="btn btn-primary">Register Movie</button>
+			<button type="submit" class="btn btn-primary">Delete Cinema Function</button>
 		</form>
 		<br />
 	</div>

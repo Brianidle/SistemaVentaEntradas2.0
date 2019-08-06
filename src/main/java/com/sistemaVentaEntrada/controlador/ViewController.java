@@ -21,6 +21,21 @@ public class ViewController {
 		return "newUserRegistration.html";
 	}
 	
+	@GetMapping("buyTicket")
+	public String pagBuyTicket() {
+		return "buyTicket.html";
+	}
+	
+	@GetMapping("chooseCinemaFunction")
+	public String chooseCinemaFunctionPag() {
+		return "ChooseCinemaFunction.html";
+	}
+	
+	@GetMapping("deleteMovie")
+	public String deleteMoviePag() {
+		return "deleteMovie.html";
+	}
+	
 	@GetMapping("home")
 	public String pagHome() {
 		return "home.html";

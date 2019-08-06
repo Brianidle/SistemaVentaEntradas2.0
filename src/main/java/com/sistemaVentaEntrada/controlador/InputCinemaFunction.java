@@ -1,16 +1,13 @@
 package com.sistemaVentaEntrada.controlador;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-public class InfoPostPelicula {
+public class InputCinemaFunction {
 	
 	String movieName;
 	Integer roomNumber;
 	String date;
 	String time;
 	
-	public InfoPostPelicula() {}
+	public InputCinemaFunction() {}
 
 	public String getMovieName() {
 		return movieName;
